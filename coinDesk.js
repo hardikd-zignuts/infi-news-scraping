@@ -87,9 +87,8 @@ async function scrapeAllPages() {
             let linkElement = article.querySelector(
               "[class^='text-color-charcoal-900 mb-4 hover:underline']"
             );
-            console.log(linkElement, "hello");
             let imgElement = article.querySelector(
-              "div:nth-child(1)>a>picture>img"
+              "div a>img"
             );
 
             let titleElement = article.querySelector(
