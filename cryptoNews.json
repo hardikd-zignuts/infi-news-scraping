@@ -1,42 +1,57 @@
 [
   {
-    "id": "7e210e59-4e00-4f17-8be2-f8a478110a22",
-    "title": "No title",
+    "id": "ce44f55d-7bf0-4e33-9280-2db55754004e",
+    "title": "Bitcoin Dominance Surges 4.4% to 57% as BTC Hits Record $104,000, Challenging Altcoin Season Narrative",
     "link": "https://cryptonews.com/news/bitcoin-dominance-surges-4-4-to-57-as-asset-hits-record-104000-challenging-alt-season-narrative/",
     "img": "No img",
     "category": "No category",
-    "badge": "No data"
+    "badge": "No data",
+    "description": "Bitcoin has surged to an all-time high of $104,000, pushing its market dominance up by 4.4% to 57%.",
+    "author": "by Ruholamin Haqshanas",
+    "date": "2024-12-06 07:01:45"
   },
   {
-    "id": "d2551f0b-4195-48fa-9584-bebd8a6164e1",
-    "title": "No title",
-    "link": "https://cryptonews.com/news/swiss-lawmakers-study-bitcoin-for-power-grid-upgrade/",
+    "id": "c7a40347-e3db-4f15-a61c-ba5f5819a49a",
+    "title": "Bitcoin ETFs See Record Monthly Inflows of $6.2B as BTC Price Nears $100K",
+    "link": "https://cryptonews.com/news/bitcoin-etfs-see-record-monthly-inflows-as-btc-price-nears-100k/",
     "img": "No img",
     "category": "No category",
-    "badge": "No data"
+    "badge": "No data",
+    "description": "The surge is largely driven by Bitcoin’s rise toward the $100,000 mark, bolstered by President-elect Donald Trump’s promises to reshape crypto regulations.",
+    "author": "by Veronika Rinecker",
+    "date": "2024-11-29 20:51:43"
   },
   {
-    "id": "253e25b5-0bf9-4c7a-81fc-4de5dc0d5612",
-    "title": "No title",
-    "link": "https://cryptonews.com/news/why-bitcoin-price-falling-8-in-4-days-means-we-could-break-100000-sooner-than-you-think/",
+    "id": "b74a8bba-e5f7-4d25-a007-e833a16b1fd2",
+    "title": "Japan’s Remixpoint to Buy $3.2M Worth of BTC With Its Balance Sheet",
+    "link": "https://cryptonews.com/news/japans-remixpoint-to-buy-another-3-2m-worth-of-btc-with-its-balance-sheet/",
     "img": "No img",
     "category": "No category",
-    "badge": "No data"
+    "badge": "No data",
+    "description": "The stock market-listed Japanese firm Remixpoint will use its balance sheet to buy $3.2 million worth of Bitcoin (BTC).\n\n\n\nPer an official Remixpoint release and a report from the Japanese-language media outlet CoinPost, the company said it will spend 500 million yen on BTC purchases before the...",
+    "author": "by Tim Alper",
+    "date": "2024-11-26 23:30:00"
   },
   {
-    "id": "d814da70-25c4-4d31-a9fe-e18260622e7e",
-    "title": "No title",
-    "link": "https://cryptonews.com/news/bitcoin-set-for-price-correction-post-surge-galaxy-ceo-mike-novogratz-says/",
+    "id": "7e798ea6-b402-41c3-a600-fbce6ada1f14",
+    "title": "Bitcoin Spot ETFs See $1B Inflows as BTC Price Inches Near $100K",
+    "link": "https://cryptonews.com/news/spot-bitcoin-etfs-1b-inflows-btc-price-inches-100k/",
     "img": "No img",
     "category": "No category",
-    "badge": "No data"
+    "badge": "No data",
+    "description": "Spot Bitcoin exchange-traded funds (ETFs) saw a significant boost on Nov. 21, attracting $1b in net inflows. This surge in investments was likely driven by the launch of options trading for these funds earlier this week, pushing Bitcoin closer to $100k.\n\n\n\nThe asset last traded around $98,970, and...",
+    "author": "by Shalini Nagarajan",
+    "date": "2024-11-22 06:38:50"
   },
   {
-    "id": "5564e2d3-2da8-4487-8217-7cd690b31302",
-    "title": "No title",
-    "link": "https://cryptonews.com/news/metaplanet-shares-surge-15-following-11-3m-bitcoin-acquisition/",
+    "id": "e871aa96-1db7-4ae3-984e-37aa781adc88",
+    "title": "Bitfinity Network Launches EVM-Compatible Bitcoin Layer 2, Backed by $12 Million in Funding",
+    "link": "https://cryptonews.com/news/bitfinity-network-launches-evm-compatible-bitcoin-layer-2/",
     "img": "No img",
     "category": "No category",
-    "badge": "No data"
+    "badge": "No data",
+    "description": "A key feature enabled by Bitfinity is that it makes it possible to write and deploy smart contracts (Ethereum-like capability) on Bitcoin.",
+    "author": "by Veronika Rinecker",
+    "date": "2024-11-19 13:23:04"
   }
 ]

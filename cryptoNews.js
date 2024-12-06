@@ -23,10 +23,10 @@ async function scrapeAllPages() {
         .querySelectorAll(".archive-template-latest-news-list-mini")
         .forEach((article) => {
           let link = article.querySelector("a")?.href;
-          let img = article.querySelector("a>img")?.src;
+
           let title = article
             .querySelector(
-              ".archive-template-latest-news__wrap>.archive-template-latest-news__title"
+              ".archive-template-latest-news__inner>.archive-template-latest-news__title"
             )
             ?.textContent.trim();
           let category = article
@@ -34,16 +34,33 @@ async function scrapeAllPages() {
             ?.textContent.trim(); // Update with correct class
           let badge = article
             .querySelector(
-              ".archive-template-latest-news__wrap>.archive-template-latest-news__label"
+              ".archive-template-latest-news__inner>.archive-template-latest-news__label"
             )
             ?.textContent.trim(); // Update with correct class
+          let description = article
+            .querySelector(
+              ".archive-template-latest-news__inner>.archive-template-latest-news__description"
+            )
+            ?.textContent.trim(); // Update with correct class
+          let timeElement = document.querySelector(
+            ".archive-template-latest-news__time"
+          ); // Update with correct class
+          let date = timeElement?.dataset.utctime;
+          let author = article
+            .querySelector(
+              ".archive-template-latest-news__inner>.archive-template-latest-news__info>.archive-template-latest-news__author"
+            )
+            ?.textContent.replace(/[\s,]+/, ""); // Update with correct class
 
           articles.push({
             title: title || "No title",
             link: link || "No link",
-            img: img || "No img",
+            img: "No img",
             category: category || "No category",
             badge: badge || "No data",
+            description: description || "No description",
+            author: author || "No author",
+            date : date || "No date"
           });
         });
       return articles;
@@ -95,7 +112,7 @@ async function scrapeAllPages() {
     }
   );
 
-  await browser.close();
+  // await browser.close();
 }
 
 scrapeAllPages();
