@@ -7,8 +7,6 @@ const { v4: uuidv4 } = require("uuid"); // Import uuid package
 async function scrapeAllPages() {
   const browser = await puppeteer.launch({
     headless: false,
-    executablePath:
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   });
   const page = await browser.newPage();
 
@@ -21,17 +19,17 @@ async function scrapeAllPages() {
     // Extract articles data from the list page
     let pageData = await page.evaluate(() => {
       let articles = [];
-      document.querySelectorAll(".news-one").forEach((article) => {
+      document.querySelectorAll(".archive-template-latest-news-list-mini").forEach((article) => {
         let link = article.querySelector("a")?.href;
         let img = article.querySelector("a>img")?.src;
         let title = article
-          .querySelector(".news-one-title>a")
+          .querySelector(".archive-template-latest-news__wrap>.archive-template-latest-news__title")
           ?.textContent.trim();
         let category = article
           .querySelector(".news-one-info>.news-one-category")
           ?.textContent.trim(); // Update with correct class
         let badge = article
-          .querySelector(".news-one-info>.article__badge-date")
+          .querySelector(".archive-template-latest-news__wrap>.archive-template-latest-news__label")
           ?.textContent.trim(); // Update with correct class
 
         articles.push({
