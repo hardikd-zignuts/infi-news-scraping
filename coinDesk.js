@@ -14,8 +14,8 @@ function delay(time) {
 async function scrapeAllPages() {
   const browser = await puppeteer.launch({
     headless: false,
-    executablePath:
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    // executablePath:
+    //   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   });
   const page = await browser.newPage();
   const url = "https://www.coindesk.com/livewire/";
@@ -24,7 +24,7 @@ async function scrapeAllPages() {
   async function scrapePage(url) {
     await page.goto(url, { timeout: 0 });
     let originalOffset = 0;
-    await page.click("#CybotCookiebotDialogBodyButtonAccept")
+    await page.click("#CybotCookiebotDialogBodyButtons")
     await delay(2000);
     while (true) {
       await page.evaluate("window.scrollBy(0, document.body.scrollHeight)");
@@ -81,22 +81,20 @@ async function scrapeAllPages() {
     let pageData = await page
       .evaluate(() => {
         let articles = [];
-        document.querySelectorAll(".side-cover-card").forEach((article) => {
-          let linkElement = article.querySelector("[class^='card-imagestyles__CardImageWrapper-sc']");
+        document.querySelectorAll(".bg-white.flex.gap-6.w-full.shrink").forEach((article) => {
+          let linkElement = article.querySelector("[class^='text-color-charcoal-900 mb-4 hover:underline']");
+          console.log(linkElement,"hello");
           let imgElement = article.querySelector(
             "div:nth-child(1)>a>picture>img"
           );
 
-          let titleElement = article.querySelector(
-            "div:nth-child(2)>.card-title-link>.card-title>h4"
-          );
+          let titleElement = article.querySelector(".text-color-charcoal-900.mb-4.hover\\:underline > h3");
           let categoryElement = article.querySelector(
             "div:nth-child(2)>div:nth-child(1)>span"
           );
 
-          let descriptionElement = article.querySelector(
-            "[class^='card-descriptionstyles__CardDescriptionWrapper-sc']>p"
-          );
+          let descriptionElement = article.querySelector(".text-color-charcoal-600.Noto_Serif_sm_Serif-400-sm.mb-4.line-clamp-3>p");
+
 
           let dateElement = article.querySelector(
             "[class^='card-datestyles__CardDateWrapper-sc']>span"
@@ -147,7 +145,7 @@ async function scrapeAllPages() {
   );
   console.log("Data has been saved to mitNews.json");
 
-  await browser.close();
+  // await browser.close();
 }
 
 scrapeAllPages();
