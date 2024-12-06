@@ -19,27 +19,33 @@ async function scrapeAllPages() {
     // Extract articles data from the list page
     let pageData = await page.evaluate(() => {
       let articles = [];
-      document.querySelectorAll(".archive-template-latest-news-list-mini").forEach((article) => {
-        let link = article.querySelector("a")?.href;
-        let img = article.querySelector("a>img")?.src;
-        let title = article
-          .querySelector(".archive-template-latest-news__wrap>.archive-template-latest-news__title")
-          ?.textContent.trim();
-        let category = article
-          .querySelector(".news-one-info>.news-one-category")
-          ?.textContent.trim(); // Update with correct class
-        let badge = article
-          .querySelector(".archive-template-latest-news__wrap>.archive-template-latest-news__label")
-          ?.textContent.trim(); // Update with correct class
+      document
+        .querySelectorAll(".archive-template-latest-news-list-mini")
+        .forEach((article) => {
+          let link = article.querySelector("a")?.href;
+          let img = article.querySelector("a>img")?.src;
+          let title = article
+            .querySelector(
+              ".archive-template-latest-news__wrap>.archive-template-latest-news__title"
+            )
+            ?.textContent.trim();
+          let category = article
+            .querySelector(".news-one-info>.news-one-category")
+            ?.textContent.trim(); // Update with correct class
+          let badge = article
+            .querySelector(
+              ".archive-template-latest-news__wrap>.archive-template-latest-news__label"
+            )
+            ?.textContent.trim(); // Update with correct class
 
-        articles.push({
-          title: title || "No title",
-          link: link || "No link",
-          img: img || "No img",
-          category: category || "No category",
-          badge: badge || "No data",
+          articles.push({
+            title: title || "No title",
+            link: link || "No link",
+            img: img || "No img",
+            category: category || "No category",
+            badge: badge || "No data",
+          });
         });
-      });
       return articles;
     });
 
@@ -54,20 +60,24 @@ async function scrapeAllPages() {
 
   // Loop to go through each page
   while (true) {
-    const url =
-      currentPage === 1
-        ? "https://cryptonews.com/news/bitcoin-news/"
-        : `https://cryptonews.com/news/bitcoin-news/page/${currentPage}/`;
-    let pageData = await scrapePage(url);
+    if (currentPage < 6) {
+      const url =
+        currentPage === 1
+          ? "https://cryptonews.com/news/bitcoin-news/"
+          : `https://cryptonews.com/news/bitcoin-news/page/${currentPage}/`;
+      let pageData = await scrapePage(url);
 
-    // Check if the current page has any articles
-    if (pageData.length === 0) {
-      console.log("No more articles found. Exiting...");
+      // Check if the current page has any articles
+      if (pageData.length === 0) {
+        console.log("No more articles found. Exiting...");
+        break;
+      }
+
+      articlesData = articlesData.concat(pageData);
+      currentPage++;
+    } else {
       break;
     }
-
-    articlesData = articlesData.concat(pageData);
-    currentPage++;
   }
 
   console.log(articlesData);
