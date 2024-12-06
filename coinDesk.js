@@ -24,7 +24,7 @@ async function scrapeAllPages() {
   async function scrapePage(url) {
     await page.goto(url, { timeout: 0 });
     let originalOffset = 0;
-    await page.click("#CybotCookiebotDialogBodyButtons")
+    await page.click("#CybotCookiebotDialogBodyButtons");
     await delay(2000);
     while (true) {
       await page.evaluate("window.scrollBy(0, document.body.scrollHeight)");
@@ -34,7 +34,7 @@ async function scrapeAllPages() {
       }
       originalOffset = newOffset;
     }
-   
+
     // Wait for the "Load More" button to appear
     let hrefElement = await page.$(
       "button.button__Button-sc-uwgksy-0.button__ActionButtonStyle-sc-uwgksy-1"
@@ -81,46 +81,53 @@ async function scrapeAllPages() {
     let pageData = await page
       .evaluate(() => {
         let articles = [];
-        document.querySelectorAll(".bg-white.flex.gap-6.w-full.shrink").forEach((article) => {
-          let linkElement = article.querySelector("[class^='text-color-charcoal-900 mb-4 hover:underline']");
-          console.log(linkElement,"hello");
-          let imgElement = article.querySelector(
-            "div:nth-child(1)>a>picture>img"
-          );
+        document
+          .querySelectorAll(".bg-white.flex.gap-6.w-full.shrink")
+          .forEach((article) => {
+            let linkElement = article.querySelector(
+              "[class^='text-color-charcoal-900 mb-4 hover:underline']"
+            );
+            console.log(linkElement, "hello");
+            let imgElement = article.querySelector(
+              "div:nth-child(1)>a>picture>img"
+            );
 
-          let titleElement = article.querySelector(".text-color-charcoal-900.mb-4.hover\\:underline > h3");
-          let categoryElement = article.querySelector(
-            "div:nth-child(2)>div:nth-child(1)>span"
-          );
+            let titleElement = article.querySelector(
+              ".text-color-charcoal-900.mb-4.hover\\:underline > h3"
+            );
+            let categoryElement = article.querySelector(
+              "div:nth-child(2)>div:nth-child(1)>span"
+            );
 
-          let descriptionElement = article.querySelector(".text-color-charcoal-600.Noto_Serif_sm_Serif-400-sm.mb-4.line-clamp-3>p");
+            let descriptionElement = article.querySelector(
+              "div.flex.flex-col > p:nth-of-type(2)"
+            );
 
+            let dateElement = article.querySelector(
+              "[class^='card-datestyles__CardDateWrapper-sc']>span"
+            );
 
-          let dateElement = article.querySelector(
-            "[class^='card-datestyles__CardDateWrapper-sc']>span"
-          );
+            let link = linkElement ? linkElement.getAttribute("href") : null;
+            let img = imgElement ? imgElement.getAttribute("src") : null;
+            let title = titleElement ? titleElement.textContent.trim() : null;
+            let category = categoryElement
+              ? categoryElement.textContent.trim()
+              : null;
+            let date = dateElement ? dateElement.textContent.trim() : null;
 
-          let link = linkElement ? linkElement.getAttribute("href") : null;
-          let img = imgElement ? imgElement.getAttribute("src") : null;
-          let title = titleElement ? titleElement.textContent.trim() : null;
-          let category = categoryElement
-            ? categoryElement.textContent.trim()
-            : null;
-          let date = dateElement ? dateElement.textContent.trim() : null;
+            let description = descriptionElement
+              ? descriptionElement.textContent.trim()
+              : null;
 
-          let description = descriptionElement
-            ? descriptionElement.textContent.trim()
-            : null;
-
-          articles.push({
-            title: title || "No title",
-            img: img || "No image",
-            link: link ? `https://www.coindesk.com${link}`  : "No link",
-            category: category ? category : "No category",
-            date: date ? date : "No date",
-            description: description || "No description",
+            articles.push({
+              title: title || "No title",
+              img: img || "No image",
+              link: link ? `https://www.coindesk.com${link}` : "No link",
+              category: category ? category : "No category",
+              date: date ? date : "No date",
+              description: description || "No description",
+            });
           });
-        });
         return articles;
       })
       .catch((err) => {
